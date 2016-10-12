@@ -1,7 +1,9 @@
 "use strict";
 
-/* eslint no-undef: 0
- object-curly-newline: 0 */
+/* eslint no-undef: 0,
+ object-curly-newline: 0,
+ handle-callback-err: 0,
+ no-unused-vars: 0 */
 
 const getMarkDown = require("../../lib/getMarkdown"),
     expect = require("chai").expect;
@@ -38,5 +40,5 @@ describe("Markdown Getter", () => {
             .catch((err) => {
                 done();
             });
-    })
+    });
 });
