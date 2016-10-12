@@ -3,18 +3,25 @@
 
 "use strict";
 
-const builder = require("../index");
+const builder = require("../index"),
+    path = require("path");
 
 const argnums = {
         SOURCE_DIR: 2,
         DIST_DIR: 3
     },
-    path = new Proxy({
+    paths = new Proxy({
         src: process.argv[argnums.SOURCE_DIR],
         dist: process.argv[argnums.DIST_DIR]
     }, {
-        get: (target, name) => target[name].replace(/^\./g, process.cwd())
+        get: (target, name) => {
+            try {
+                return path.normalize(target[name]);
+            } catch (e) {
+                throw new Error("Please, specify valid paths");
+            }
+        }
     });
 
 
-builder(path.src, path.dist);
+builder(paths.src, paths.dist);
