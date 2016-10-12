@@ -1,0 +1,15 @@
+{
+  "name": "imard-module-builder",
+  "version": "1.0.0",
+  "description": "A building tool for learning modules within IMARD ecosystem",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Nachasic",
+  "license": "MIT",
+  "dependencies": {
+    "markdown-it": "^8.0.0",
+    "pug": "^2.0.0-beta6"
+  }
+}
