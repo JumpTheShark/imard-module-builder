@@ -3,13 +3,24 @@
   "version": "1.0.0",
   "description": "A building tool for learning modules within IMARD ecosystem",
   "main": "index.js",
+  "bin": {
+    "imard-build": "bin/build.js"
+  },
   "scripts": {
-    "test": "test"
+    "test": "karma start",
+    "start": "node bin/build.js"
   },
   "author": "Nachasic",
   "license": "MIT",
   "dependencies": {
+    "fs-promise": "^0.5.0",
     "markdown-it": "^8.0.0",
     "pug": "^2.0.0-beta6"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.7.1",
+    "karma": "^1.3.0",
+    "mocha": "^3.1.2"
   }
 }
