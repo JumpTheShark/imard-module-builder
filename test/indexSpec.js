@@ -6,7 +6,7 @@
 const builder = require("../index"),
     expect = require("chai").expect;
 
-describe("Main builder tests", () => {
+describe("Main builder", () => {
     it("should load as an NPM module", () => {
         expect(builder).not.to.be.an("undefined");
     });

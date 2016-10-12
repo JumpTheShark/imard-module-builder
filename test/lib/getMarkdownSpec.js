@@ -6,7 +6,7 @@
 const getMarkDown = require("../../lib/getMarkdown"),
     expect = require("chai").expect;
 
-describe("Markdown Getter tests", () => {
+describe("Markdown Getter", () => {
     const fixtures = {
             README: `${__dirname}/fixtures/README.md`,
         },
@@ -14,11 +14,11 @@ describe("Markdown Getter tests", () => {
             readme: "<h2>This is a fixture README</h2>\n<p>With a simple paragraph</p>\n",
         };
 
-    it("Should load", () => {
+    it("should load", () => {
         expect(getMarkDown).not.to.be.an("undefined");
     });
 
-    it("Should load and convert markdown files to HTML", (done) => {
+    it("should load and convert markdown files to HTML", (done) => {
         getMarkDown(fixtures.README)
             .then((content) => {
                 expect(content).to.be.equal(expected.readme);
