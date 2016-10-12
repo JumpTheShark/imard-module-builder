@@ -11,7 +11,7 @@ describe("Markdown Getter tests", () => {
             README: `${__dirname}/fixtures/README.md`,
         },
         expected = {
-            content: "<h2>This is a fixture MODULE</h2>\n<p>With a simple paragraph</p>\n",
+            readme: "<h2>This is a fixture README</h2>\n<p>With a simple paragraph</p>\n",
         };
 
     it("Should load", () => {
