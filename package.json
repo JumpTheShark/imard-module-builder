@@ -7,7 +7,7 @@
     "imard-build": "bin/build.js"
   },
   "scripts": {
-    "test": "istanbul cover mocha -- --recursive -R spec test/",
+    "test": "istanbul cover --report html _mocha -- --recursive -R spec test/",
     "start": "node bin/build.js"
   },
   "author": "Nachasic",

@@ -9,6 +9,7 @@ const getMarkDown = require("../../lib/getMarkdown"),
 describe("Markdown Getter", () => {
     const fixtures = {
             README: `${__dirname}/fixtures/README.md`,
+            ERR: `${__dirname}/fixtures/nofile`
         },
         expected = {
             readme: "<h2>This is a fixture README</h2>\n<p>With a simple paragraph</p>\n",
@@ -28,4 +29,14 @@ describe("Markdown Getter", () => {
                 done(err);
             });
     });
+
+    it("should reject with error when given invalid path", (done) => {
+        getMarkDown(fixtures.ERR)
+            .then((content) => {
+                done(content);
+            })
+            .catch((err) => {
+                done();
+            });
+    })
 });
