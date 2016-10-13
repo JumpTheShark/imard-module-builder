@@ -13,7 +13,8 @@ describe("Main builder", () => {
         expect(builder).not.to.be.an("undefined");
     });
 
-    describe("when loading files", () => {
+    // Deprecated behaviour
+    describe.skip("when loading files", () => {
         let gotData = null;
         const source = `${__dirname}/lib/fixtures`,
             dist = `${__dirname}/temp`,
@@ -66,13 +67,13 @@ describe("Main builder", () => {
         const wrongSource = `${__dirname}/lib`,
             dist = `${__dirname}/temp`;
 
-        it("should reject with an error when given invalid source path argument", (done) => {
+        it("should reject with  error when given invalid source path argument", (done) => {
             builder(null, null)
                 .then((result) => done(result))
                 .catch((err) => done());
         });
 
-        it("should reject with an error when given source path doesn't contain any module files", (done) => {
+        it("should reject with  error when given source path doesn't contain any module files", (done) => {
             builder(wrongSource, dist)
                 .then((result) => done(result))
                 .catch((err) => done());

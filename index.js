@@ -42,14 +42,9 @@ const build = function (src, dist) {
         Promise.all( [readmePromise, contentPromise, jsonPromise] )
             .then(renderAll)
             .then(writeAll)
-            // .then(( [readme, content, metaJSON] ) => {
-            //
-            //     resolve({
-            //         readme: readme,
-            //         content: content,
-            //         meta: JSON.parse(metaJSON)
-            //     });
-            // })
+            .then(( data ) => {
+                resolve(data);
+            })
             .catch( (err) => reject(err) );
     } );
 
