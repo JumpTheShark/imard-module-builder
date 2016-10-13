@@ -17,7 +17,7 @@ const argnums = {
         get: (target, name) => {
             try {
                 return path.normalize(target[name]);
-            } catch (e) {
+            } catch (err) {
                 throw new Error("Please, specify valid paths");
             }
         }
