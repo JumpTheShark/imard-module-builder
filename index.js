@@ -2,12 +2,14 @@
 
 const pug = require("pug"),
     getMarkdown = require("./lib/getMarkdown"),
-    path = require("path");
+    path = require("path"),
+    fs = require("fs-promise");
 
 const build = function (src, dist) {
     let paths = {},
         readmePromise = null,
-        contentPromise = null;
+        contentPromise = null,
+        jsonPromise = null;
 
     return new Promise( (resolve, reject) => {
         try {
@@ -32,12 +34,15 @@ const build = function (src, dist) {
 
         readmePromise = getMarkdown(paths.src.readme);
         contentPromise = getMarkdown(paths.src.content);
+        jsonPromise = fs.readFile(paths.src.meta, "utf8");
 
-        Promise.all( [readmePromise, contentPromise] )
-            .then(( [readme, content] ) => {
+        Promise.all( [readmePromise, contentPromise, jsonPromise] )
+            .then(( [readme, content, metaJSON] ) => {
+
                 resolve({
                     readme: readme,
-                    content: content
+                    content: content,
+                    meta: JSON.parse(metaJSON)
                 });
             })
             .catch( (err) => reject(err) );

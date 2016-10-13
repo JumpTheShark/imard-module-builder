@@ -1,0 +1,15 @@
+{
+  "id": "1475772578223",
+  "language": "en",
+  "title": "Sample module",
+  "description": "Sample learning module created to demonstrate the very basic model functionality",
+  "created": "Thu Oct 06 2016",
+  "revised": "Thu Oct 06 2016",
+  "contributors": ["IMARD system"],
+  "keywords": ["IMARD","sample"],
+  "disciplines": ["IMARD system","computer science"],
+  "studyObjectives": ["Learn the ways of adaptive learning","Embrace the power of static generators"],
+  "elements": [
+    "https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/paper-button/paper-button.html"
+  ]
+}
