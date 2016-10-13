@@ -32,7 +32,7 @@ describe("Markdown Getter", () => {
             });
     });
 
-    it("should reject with error when given invalid path", (done) => {
+    it("should reject with an error when given invalid path", (done) => {
         getMarkDown(fixtures.ERR)
             .then((content) => {
                 done(content);

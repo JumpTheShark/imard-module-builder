@@ -4,11 +4,11 @@
   "description": "A building tool for learning modules within IMARD ecosystem",
   "main": "index.js",
   "bin": {
-    "imard-build": "bin/build.js --harmony_destructuring"
+    "imard-build": "--harmony_destructuring bin/build.js"
   },
   "scripts": {
     "test": "istanbul cover --report html _mocha -- --recursive -R spec test/ --harmony_destructuring",
-    "start": "node bin/build.js --harmony_destructuring"
+    "start": "node --harmony bin/build.js"
   },
   "author": "Nachasic",
   "license": "MIT",

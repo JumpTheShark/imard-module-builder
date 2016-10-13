@@ -66,13 +66,13 @@ describe("Main builder", () => {
         const wrongSource = `${__dirname}/lib`,
             dist = `${__dirname}/temp`;
 
-        it("should reject with error when given invalid source path argument", (done) => {
+        it("should reject with an error when given invalid source path argument", (done) => {
             builder(null, null)
                 .then((result) => done(result))
                 .catch((err) => done());
         });
 
-        it("should reject with error when given source path doesn't contain any module files", (done) => {
+        it("should reject with an error when given source path doesn't contain any module files", (done) => {
             builder(wrongSource, dist)
                 .then((result) => done(result))
                 .catch((err) => done());

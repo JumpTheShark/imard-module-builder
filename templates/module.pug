@@ -1,0 +1,24 @@
+link(rel="import", href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/polymer/polymer.html")
+link(rel="import", href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/paper-card/paper-card.html")
+if (elements.length > 0)
+  each el in elements
+    link(rel="import", href=el)
+
+dom-module(id="module-content")
+  template
+    style.
+      :host {
+        display: block;
+        padding: 10px 20px;
+      }
+      #content {
+        width: 100%;
+      }
+    paper-card(elevation=2 heading=title)#content
+      .card-content
+        | !{content}
+
+  script.
+    Polymer({
+      is: 'module-content'
+    });
