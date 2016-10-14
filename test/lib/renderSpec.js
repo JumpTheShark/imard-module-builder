@@ -44,7 +44,8 @@ describe("Template renderer", () => {
             renderAll([
                 validData.readme,
                 validData.module,
-                JSON.stringify(validData.meta)])
+                JSON.stringify(validData.meta)
+            ])
                 .then( ([indexMarkup, readmeMarkup, moduleMarkup, moduleID]) => {
                     compiledData.index = indexMarkup;
                     compiledData.readme = readmeMarkup;
@@ -67,6 +68,37 @@ describe("Template renderer", () => {
     });
 
     describe("when handling errors", () => {
+        const invalidData = {
+            readme: "<h1>An example README</h1>",
+            module: "<h1>An example module</h1>",
+            meta: {
+                // id: "1337",
+                language: "en",
+                // title: "Sample module",
+                description: "Sample learning module created to demonstrate the very basic model functionality",
+                created: "Thu Oct 06 2016",
+                revised: "Thu Oct 06 2016",
+                contributors: ["IMARD system"],
+                keywords: ["IMARD", "sample"],
+                disciplines: ["IMARD system", "computer science"],
+                studyObjectives: ["Learn the ways of adaptive learning", "Embrace the power of static generators"],
+                // elements: [
+                //     "https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/paper-button/paper-button.html"
+                // ]
+            }
+            };
 
+        it("should reject with an error when given a set of invalid data", (done) => {
+            renderAll([
+                invalidData.readme,
+                invalidData.module,
+                JSON.stringify(invalidData.meta)
+            ])
+                .then( (data) => done(data) )
+                .catch( (err) => {
+                    expect(err).not.to.be.an("undefined");
+                    done();
+                } );
+        });
     });
 });

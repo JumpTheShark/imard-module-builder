@@ -5,10 +5,10 @@
 Funcitonality to implement:
 - [x] Read source files from the provided directory
 - [x] Compile markdown to an HTML
-- [ ] Compile templates
-- [ ] Write resulting files to the destination folder
+- [x] Compile templates
+- [x] Write resulting files to the destination folder
 - [x] Error handling
-- [x] Test coverage
+- [ ] Test coverage
 
 This tool works with file structure like one generated with [IMARD module generator](https://github.com/JumpTheShark/generator-imard-module), i.e. you module should contain:
 

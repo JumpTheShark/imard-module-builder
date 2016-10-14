@@ -29,9 +29,9 @@ describe("Main builder", () => {
                     created: "Thu Oct 06 2016",
                     revised: "Thu Oct 06 2016",
                     contributors: ["IMARD system"],
-                    keywords: ["IMARD","sample"],
-                    disciplines: ["IMARD system","computer science"],
-                    studyObjectives: ["Learn the ways of adaptive learning","Embrace the power of static generators"],
+                    keywords: ["IMARD", "sample"],
+                    disciplines: ["IMARD system", "computer science"],
+                    studyObjectives: ["Learn the ways of adaptive learning", "Embrace the power of static generators"],
                     elements: [
                         "https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/paper-button/paper-button.html"
                     ]
@@ -67,13 +67,13 @@ describe("Main builder", () => {
         const wrongSource = `${__dirname}/lib`,
             dist = `${__dirname}/temp`;
 
-        it("should reject with  error when given invalid source path argument", (done) => {
+        it("should reject with an error when given invalid source path argument", (done) => {
             builder(null, null)
                 .then((result) => done(result))
                 .catch((err) => done());
         });
 
-        it("should reject with  error when given source path doesn't contain any module files", (done) => {
+        it("should reject with an error when given source path doesn't contain any module files", (done) => {
             builder(wrongSource, dist)
                 .then((result) => done(result))
                 .catch((err) => done());

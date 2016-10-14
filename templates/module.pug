@@ -4,6 +4,8 @@ if (elements.length > 0)
   each el in elements
     link(rel="import", href=el)
 
+- var name = "module-" + id
+
 dom-module(id="module-content")
   template
     style.
@@ -18,7 +20,8 @@ dom-module(id="module-content")
       .card-content
         | !{content}
 
+  // TODO: fix naming the module inside Polymer initialization
   script.
     Polymer({
-      is: 'module-content'
+      is: "!{name}"
     });

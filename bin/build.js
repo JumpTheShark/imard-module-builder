@@ -16,13 +16,7 @@ const argnums = {
     }, {
         get: (target, name) => {
             try {
-                let dir = path.normalize(target[name]);
-
-                // if (!path.isAbsolute(dir)) {
-                //     dir = path.join("../", dir);
-                // }
-
-                return dir;
+                return path.normalize(target[name]);
             } catch (err) {
                 throw new Error("Please, specify valid paths");
             }
