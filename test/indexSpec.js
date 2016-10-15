@@ -14,10 +14,17 @@ describe("Main builder", () => {
     });
 
     // Deprecated behaviour
-    describe.skip("when loading files", () => {
+    describe("when loading files", () => {
         let gotData = null;
         const source = `${__dirname}/lib/fixtures`,
+            expectedOutput = [],
+
+            IDX_INDEX = 0,
+            IDX_README = 1,
+            IDX_BODY = 2,
+
             dist = `${__dirname}/temp`,
+
             expected = {
                 content: "<h2>This is a fixture MODULE</h2>\n<p>With a simple paragraph</p>\n",
                 readme: "<h2>This is a fixture README</h2>\n<p>With a simple paragraph</p>\n",
@@ -38,6 +45,10 @@ describe("Main builder", () => {
                 }
             };
 
+        expectedOutput[IDX_INDEX] = `${dist}/index.html`;
+        expectedOutput[IDX_README] = `${dist}/module/module-readme.html`;
+        expectedOutput[IDX_BODY] = `${dist}/module/module-1475772578223.html`;
+
         before( (done) => {
             builder(source, dist)
                 .then( (result) => {
@@ -47,19 +58,11 @@ describe("Main builder", () => {
                 .catch( (err) => done(err) );
         } );
 
-        it("should return parsed contents", () => {
-            expect(gotData.content).to.be.equal(expected.content);
-        });
-
-        it("should return parsed readme", () => {
-            expect(gotData.readme).to.be.equal(expected.readme);
-        });
-
-        it("should return proper meta", () => {
-            const actualJSON = JSON.stringify(gotData.meta),
-                expectedJSON = JSON.stringify(expected.meta);
-
-            expect(actualJSON).to.be.equal(expectedJSON);
+        it("should return an array of valid paths", () => {
+            expect(gotData).to.be.an("array");
+            expect(gotData[IDX_BODY]).to.be.equal(expectedOutput[IDX_BODY]);
+            expect(gotData[IDX_INDEX]).to.be.equal(expectedOutput[IDX_INDEX]);
+            expect(gotData[IDX_README]).to.be.equal(expectedOutput[IDX_README]);
         });
     });
 

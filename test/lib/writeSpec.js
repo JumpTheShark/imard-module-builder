@@ -18,11 +18,11 @@ chai.use(chaiFs);
 
 describe("File writer", () => {
     const dist = {
-        root: "temp/writertest/",
-        index: "temp/writertest/index.html",
-        readme: "temp/writertest/module/module-readme.html",
+        root: `${__dirname}/temp/writertest/`,
+        index: `${__dirname}/temp/writertest/index.html`,
+        readme: `${__dirname}/temp/writertest/module/module-readme.html`,
 
-        body: (id) => `temp/writertest/module/module-${id}.html`
+        body: (id) => `${__dirname}/temp/writertest/module/module-${id}.html`
     };
     let writeAll = null;
 
@@ -111,7 +111,44 @@ describe("File writer", () => {
         });
     });
 
-    describe.skip("when handling errors", () => {
+    describe("when handling errors", () => {
+        const wrongdist = {
+                root: null,
+                index: null,
+                readme: null,
 
+                body: (id) => `${__dirname}/temp/writertest/module/module-${id}.html`
+            },
+            files = {
+                index: "<h1>INDEX TEST</h1>",
+                readme: "<h1>README TEST</h1>",
+                module: "<h1>MODULE TEST</h1>"
+            },
+            TEST_ID = "13375P34K";
+
+        let writeWrong = null;
+
+        before( (done) => {
+            fs.emptyDir(dist.root)
+                .then( () => {
+                    writeWrong = writeGen(wrongdist);
+                    done();
+                } )
+                .catch( (err) => done(err) );
+        } );
+
+        it("should reject with an error when given flawed paths", (done) => {
+            writeWrong([
+                files.index,
+                files.readme,
+                files.module,
+                TEST_ID
+            ])
+                .then( (data) => done(data) )
+                .catch( (err) => {
+                    expect(err).not.to.be.an("undefined");
+                    done();
+                } );
+        });
     });
 });

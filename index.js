@@ -42,9 +42,9 @@ const build = function (src, dist) {
         Promise.all( [readmePromise, contentPromise, jsonPromise] )
             .then(renderAll)
             .then(writeAll)
-            .then(( data ) => {
+            .then( (data) => {
                 resolve(data);
-            })
+            } )
             .catch( (err) => reject(err) );
     } );
 
