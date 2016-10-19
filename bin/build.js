@@ -1,4 +1,4 @@
-#! /usr/bin/env node
+#! /usr/bin/env node --harmony
 /* eslint object-curly-newline: 0 */
 
 "use strict";
