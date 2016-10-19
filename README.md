@@ -8,7 +8,7 @@ Funcitonality to implement:
 - [x] Compile templates
 - [x] Write resulting files to the destination folder
 - [x] Error handling
-- [ ] Test coverage
+- [x] Test coverage
 
 This tool works with file structure like one generated with [IMARD module generator](https://github.com/JumpTheShark/generator-imard-module), i.e. you module should contain:
 
